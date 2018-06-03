@@ -1,6 +1,25 @@
 .card-back {
+  /* Setting background gradient via colorzilla */
+  /* http://www.colorzilla.com/gradient-editor/ */
+  backface-visibility: hidden;
   background: #a7eb31;
   background: -moz-linear-gradient(-45deg, #a7eb31 0%, #8bc428 50%, #698826 100%, #648d1d 100%);
   background: -webkit-linear-gradient(-45deg, #a7eb31 0%,#8bc428 50%,#698826 100%,#648d1d 100%);
   background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%,#648d1d 100%);
+  transform: perspective(600px) rotateY(0deg);
+  transition: all .5s linear 0s;
+}
+
+.card-back-rotate {
+  transform: perspective(1600px) rotateY(0deg);
+}
+
+.card-front {
+  backface-visibility: hidden;
+  transform: perspective(600px) rotateY(0deg);
+  transition: all .5s linear 0s;
+}
+
+.card-front-rotate {
+  transform: perspective(1600px) rotateY(-180deg);
 }
