@@ -1,3 +1,7 @@
+.hidden {
+  visibility: hidden;
+}
+
 .card-deck {
 }
 
@@ -6,37 +10,46 @@
 }
 
 .rotate-container .card-front, .rotate-container .card-back {
-  height: 100%;
-  -webkit-transform: perspective(600px) rotateY(0deg);
-          transform: perspective(600px) rotateY(0deg);
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid gray;
+  border-radius: 3px;
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+  height: 100%;
+  margin: 0;
+  -ms-transform: perspective(600px) rotateY(0deg);
+  -webkit-transform: perspective(600px) rotateY(0deg);
+  transform: perspective(600px) rotateY(0deg);
   transition: all 0.5s linear 0s;
 }
 
 .rotate-container .card-front {
-  -webkit-transform: perspective(1600px) rotateY(180deg);
-          transform: perspective(1600px) rotateY(180deg);
-  position: absolute;
-  top: 0;
   left: 0;
+  margin: 0;
+  position: absolute;
   right: 0;
+  top: 0;
+  -ms-transform: perspective(1600px) rotateY(180deg);
+  -webkit-transform: perspective(1600px) rotateY(180deg);
+  transform: perspective(1600px) rotateY(180deg);
 }
 
 .rotate-container .rotate-card-front {
+  -ms-transform: perspective(1600px) rotateY(0deg);
   -webkit-transform: perspective(1600px) rotateY(0deg);
   transform: perspective(1600px) rotateY(0deg);
 }
 
 .rotate-container .rotate-card-back {
+  -ms-transform: perspective(1600px) rotateY(-180deg);
   -webkit-transform: perspective(1600px) rotateY(-180deg);
   transform: perspective(1600px) rotateY(-180deg);
 }
 
 .card {
-  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
-  margin: 0;
+  border-style: none;
   height: 96px;
+  margin: 0;
   width: 76px;
 }
 
