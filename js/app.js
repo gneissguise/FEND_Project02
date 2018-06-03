@@ -1,5 +1,7 @@
 $(function() {
-  $(".card-back").click(function() {
-    this.toggleClass("card-rotate-back");
+  $(".card").click(function() {
+    console.log("Click!");
+    $(".card-back").toggleClass("rotate-card-back");
+    $(".card-front").toggleClass("rotate-card-front");
   })
 });

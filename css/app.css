@@ -1,25 +1,51 @@
-.card-back {
-  /* Setting background gradient via colorzilla */
-  /* http://www.colorzilla.com/gradient-editor/ */
-  backface-visibility: hidden;
-  background: #a7eb31;
-  background: -moz-linear-gradient(-45deg, #a7eb31 0%, #8bc428 50%, #698826 100%, #648d1d 100%);
-  background: -webkit-linear-gradient(-45deg, #a7eb31 0%,#8bc428 50%,#698826 100%,#648d1d 100%);
-  background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%,#648d1d 100%);
-  transform: perspective(600px) rotateY(0deg);
-  transition: all .5s linear 0s;
+.card-deck {
 }
 
-.card-back-rotate {
+.rotate-container {
+  position: relative;
+}
+
+.rotate-container .card-front, .rotate-container .card-back {
+  height: 100%;
+  -webkit-transform: perspective(600px) rotateY(0deg);
+          transform: perspective(600px) rotateY(0deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: all 0.5s linear 0s;
+}
+
+.rotate-container .card-front {
+  -webkit-transform: perspective(1600px) rotateY(180deg);
+          transform: perspective(1600px) rotateY(180deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.rotate-container .rotate-card-front {
+  -webkit-transform: perspective(1600px) rotateY(0deg);
   transform: perspective(1600px) rotateY(0deg);
 }
 
-.card-front {
-  backface-visibility: hidden;
-  transform: perspective(600px) rotateY(0deg);
-  transition: all .5s linear 0s;
+.rotate-container .rotate-card-back {
+  -webkit-transform: perspective(1600px) rotateY(-180deg);
+  transform: perspective(1600px) rotateY(-180deg);
 }
 
-.card-front-rotate {
-  transform: perspective(1600px) rotateY(-180deg);
+.card {
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  height: 96px;
+  width: 76px;
+}
+
+.card-back {
+  /* Setting background gradient via colorzilla */
+  /* http://www.colorzilla.com/gradient-editor/ */
+  background: #a7eb31;
+  background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%,#648d1d 100%);
+}
+
+.card-front {
 }
