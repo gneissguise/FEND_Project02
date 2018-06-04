@@ -1,5 +1,5 @@
 var CARD_COUNT = 12;
-var EMOJI_LIST['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
+var EMOJI_LIST = ['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
   'em-bacon', 'em-bear', 'em-bee', 'em-beer', 'em-beetle',
   'em-birthday', 'em-bomb', 'em-brain', 'em-burrito', 'em-cactus',
   'em-candy', 'em-cat', 'em-doughnut', 'em-eagle', 'em-fire',
@@ -44,7 +44,7 @@ $(function() {
   };
 
   var generatePairs = function() {
-    var selected[];
+    var selected = [];
 
     for (var i = 0; i < (CARD_COUNT / 2); i++) {
       var n = rando(MAX_EMOJI);
@@ -62,8 +62,8 @@ $(function() {
   }
 
   var dealCards = function() {
-    var cards[];
-    var pairCount[0, 0, 0, 0, 0, 0];
+    var cards = [];
+    var pairCount = [0, 0, 0, 0, 0, 0];
 
     for (var i = 0; i < CARD_COUNT; i++) {
       var n = rando(CARD_COUNT);
@@ -78,10 +78,10 @@ $(function() {
         }
         pairCount[p]++;
 
-        while (cards.find(funtion(c){
-          return c.id === newCard(n);
+        while (cards.find(function(c) {
+          return (c.id === newCardId(n));
         })){
-          n = rando[CARD_COUNT];
+          n = rando(CARD_COUNT);
         }
       }
       cards.push({
@@ -94,8 +94,8 @@ $(function() {
     return cards;
   }
 
-  var pairs[] = generatePairs();
-  var cardList[] = dealCards();
+  var pairs = generatePairs();
+  var cardList = dealCards();
   var deck = $(".card-deck");
   var card = $("#card-template .rotate-container");
 
