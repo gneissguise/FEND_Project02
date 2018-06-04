@@ -1,4 +1,12 @@
 var CARD_COUNT = 12;
+var EMOJI_LIST['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
+  'em-bacon', 'em-bear', 'em-bee', 'em-beer', 'em-beetle',
+  'em-birthday', 'em-bomb', 'em-brain', 'em-burrito', 'em-cactus',
+  'em-candy', 'em-cat', 'em-doughnut', 'em-eagle', 'em-fire',
+  'em-flushed', 'em-fox_face', 'em-ghost', 'em-grinning', 'em-hankey',
+  'em-heart_eyes', 'em-jack_o_lantern', 'em-joy', 'em-kiss',
+  'em-monkey_face', 'em-mushroom', 'em-palm_tree', 'em-pizza'];
+var MAX_EMOJI = EMOJI_LIST.length;
 
 $(function() {
   var registerEventListeners = function() {
@@ -34,31 +42,59 @@ $(function() {
     var selected[];
 
     for (var i = 0; i < (CARD_COUNT / 2); i++) {
-      var n = rando();
+      var n = rando(MAX_EMOJI);
 
-      if (selected.length === 0 || selected.indexOf(emojiList[n]) === -1){
-        selected.push(emojiList[n]);
+      if (selected.length === 0 ||
+          selected.indexOf(EMOJI_LIST[n]) === -1) {
+        selected.push(EMOJI_LIST[n]);
       }
       else {
-          while(selected.indexOf(emojiList[n]) > -1) {
-            n = rando();
-          }
-          selected.push(emojiList[n]);
+        while(selected.indexOf(EMOJI_LIST[n]) > -1) {
+          n = rando(MAX_EMOJI);
+        }
+        selected.push(EMOJI_LIST[n]);
       }
     }
 
     return selected;
   }
 
-  var emojiList['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
-    'em-bacon', 'em-bear', 'em-bee', 'em-beer', 'em-beetle',
-    'em-birthday', 'em-bomb', 'em-brain', 'em-burrito', 'em-cactus',
-    'em-candy', 'em-cat', 'em-doughnut', 'em-eagle', 'em-fire',
-    'em-flushed', 'em-fox_face', 'em-ghost', 'em-grinning', 'em-hankey',
-    'em-heart_eyes', 'em-jack_o_lantern', 'em-joy', 'em-kiss',
-    'em-monkey_face', 'em-mushroom', 'em-palm_tree', 'em-pizza'];
+  var dealCards = function() {
+    var cards[];
+    var pairCount[0, 0, 0, 0, 0, 0];
+
+    for (var i = 0; i < CARD_COUNT; i++) {
+      var n = rando(CARD_COUNT);
+      var p = rando(CARD_COUNT / 2);
+
+      if (i === 0) {
+        pairCount[p] = 1;
+        cards.push({
+          id: newCardId(n),
+          match: false,
+          face: pairs[p],
+        });
+      }
+      else {
+        while (pairCount[p] === 2) {
+          p = rando(CARD_COUNT / 2);
+        }
+        pairCount[p]++;
+
+        while (cards.find(funtion(c){
+          return c.id === newCard(n);
+        })){
+
+        }
+
+      }
+    }
+
+    return cards;
+  }
+
   var pairs[] = generatePairs();
-  var cardList;
+  var cardList[] = dealCards;
   var deck = $(".card-deck");
   var card = $("#card-template .rotate-container");
 
