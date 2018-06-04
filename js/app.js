@@ -15,11 +15,42 @@ $(function() {
       var id = target.attr("id");
       var elClass = target.attr("class");
 
-      console.log("Click: " + id + " " + target.attr("class"));
+      console.log("Click: " + id + " " + target.attr("class") + " clickCount: " + clickCount);
 
-      if (elClass === "card-back") {
+      if (elClass === "card-back" && clickCount < 2) {
+        console.log("current id: " + id);
+        console.log("findCardById: " + findCardById(id));
+        var cardSelected = findCardById(id);
+
         target.toggleClass("rotate-card-back");
         target.next(".card-front").toggleClass("rotate-card-front");
+
+        cardSelected.faceUp = true;
+        clickedCard[clickCount] = cardSelected;
+        clickCount++;
+
+        if (clickCount === 2) {
+          clickCount = 0;
+
+          if (clickedCard[0].face === clickedCard[1].face) {
+            clickedCard[0].match = true;
+            clickedCard[1].match = true;
+          }
+          else {
+            setTimeout(function() {
+              for (var i = 0; i < CARD_COUNT; i++){
+                console.log("card: " + cardList[i].id + " card match: " + cardList[i].match);
+                if (!cardList[i].match && cardList[i].faceUp) {
+                  var cardReset = $("#" + cardList[i].id);
+                  cardReset.toggleClass("rotate-card-back");
+                  cardReset.next(".card-front").toggleClass("rotate-card-front");
+                  cardList[i].faceUp = false;
+                  console.log("class: " + cardReset.attr("class"));
+                }
+              }
+            }, 500);
+          }
+        }
       }
     });
   };
@@ -61,6 +92,12 @@ $(function() {
     return selected;
   }
 
+  var findCardById = function(id) {
+    return cardList.find(function(c) {
+      return (c.id === id);
+    });
+  }
+
   var dealCards = function() {
     var cards = [];
     var pairCount = [0, 0, 0, 0, 0, 0];
@@ -86,9 +123,10 @@ $(function() {
       }
       cards.push({
         id: newCardId(n),
-        match: false,
         face: pairs[p],
-      });
+        faceUp: false,
+        match: false,
+      })
     }
 
     return cards;
@@ -98,6 +136,8 @@ $(function() {
   var cardList = dealCards();
   var deck = $(".card-deck");
   var card = $("#card-template .rotate-container");
+  var clickedCard = [null, null];
+  var clickCount = 0;
 
   for (var i = 0; i < CARD_COUNT; i++) {
     insertCard(i);
