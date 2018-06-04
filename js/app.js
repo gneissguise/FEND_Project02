@@ -37,6 +37,12 @@ $(function() {
             clickedCard[0].match = true;
             clickedCard[1].match = true;
             matchCount++;
+
+            if (matchCount === CARD_COUNT / 2) {
+              setTimeout(function() { alert("You won!") }, 500);
+              return;
+            }
+
           }
           else {
             setTimeout(function() {
