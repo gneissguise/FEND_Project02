@@ -33,8 +33,13 @@ $(function() {
   };
 
   var insertCard = function(id) {
+    var c = cardList[id];
     var newCard = card.clone();
-    newCard.find(".card-back").prop("id", newCardId(id));
+    var cardBack = newCard.find(".card-back");
+    var cardFront = newCard.find(".card-front");
+
+    cardBack.prop("id", c.id);
+    cardFront.append("<i class='em-svg " + c.face + "'></i>");
     newCard.appendTo(deck);
   };
 
@@ -44,16 +49,13 @@ $(function() {
     for (var i = 0; i < (CARD_COUNT / 2); i++) {
       var n = rando(MAX_EMOJI);
 
-      if (selected.length === 0 ||
-          selected.indexOf(EMOJI_LIST[n]) === -1) {
-        selected.push(EMOJI_LIST[n]);
-      }
-      else {
+      if (selected.length !== 0 &&
+          selected.indexOf(EMOJI_LIST[n]) !== -1) {
         while(selected.indexOf(EMOJI_LIST[n]) > -1) {
           n = rando(MAX_EMOJI);
         }
-        selected.push(EMOJI_LIST[n]);
       }
+      selected.push(EMOJI_LIST[n]);
     }
 
     return selected;
@@ -69,11 +71,6 @@ $(function() {
 
       if (i === 0) {
         pairCount[p] = 1;
-        cards.push({
-          id: newCardId(n),
-          match: false,
-          face: pairs[p],
-        });
       }
       else {
         while (pairCount[p] === 2) {
@@ -84,21 +81,25 @@ $(function() {
         while (cards.find(funtion(c){
           return c.id === newCard(n);
         })){
-
+          n = rando[CARD_COUNT];
         }
-
       }
+      cards.push({
+        id: newCardId(n),
+        match: false,
+        face: pairs[p],
+      });
     }
 
     return cards;
   }
 
   var pairs[] = generatePairs();
-  var cardList[] = dealCards;
+  var cardList[] = dealCards();
   var deck = $(".card-deck");
   var card = $("#card-template .rotate-container");
 
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < CARD_COUNT; i++) {
     insertCard(i);
   }
 
