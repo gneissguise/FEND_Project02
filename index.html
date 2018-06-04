@@ -61,17 +61,20 @@
     </div>
 
     <div class="container">
-      <header><h1><i class="em em-grinning_face_with_one_large_and_one_small_eye"></i> Emoji Matchup</h1></header>
-      <article>
-        <div class="toolbar">
-          <button class="btn" id="reset">Reset Game</button>
-          <span class="stats">
-            Clicks: <span id="clicks">0</span>
-            Matches: <span id="matches">0</span>
-          </span>
-        </div>
-      </article>
+      <div class="header">
+        <h1>
+          <i class="em em-grinning_face_with_one_large_and_one_small_eye"></i>
+          Emoji Matchup
+        </h1>
+      </div>
 
+      <div class="toolbar">
+        <button class="btn" id="reset">Reset Game</button>
+        <span class="stats">
+          Clicks: <span id="clicks">0</span>
+          Matches: <span id="matches">0</span>
+        </span>
+      </div>
       <!-- Hidden card template that we will access in js -->
       <div id="card-template" class="hidden">
         <div class="rotate-container">
@@ -92,9 +95,10 @@
       <footer></footer>
 
       <!-- jQuery first, then Tether, then Bootstrap JS. -->
-      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-              integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-              crossorigin="anonymous"></script>
+      <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
               integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
               crossorigin="anonymous"></script>

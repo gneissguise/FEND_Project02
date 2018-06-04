@@ -1,23 +1,78 @@
+html {
+  margin: auto;
+  height: 100%;
+}
+
+body {
+  background-image: none;
+  background-color: #6495ED;
+  vertical-align: middle;
+}
+
+.header, .toolbar, .container {
+  margin: 0 auto;
+}
+
+.container{
+  padding: 5px;
+
+}
+
+.header {
+  align-items: center;
+  background-color: red;
+  clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+  vertical-align: middle;
+  width: 100%;
+}
+.header h1 {
+  font-size: 22pt;
+}
+
+.toolbar {
+  padding: 3px;
+  width: 100%;
+}
+
 .hidden {
-  visibility: hidden;
+  display: none;
+}
+
+.glow {
+  box-shadow: 0px 1px 35px rgba(0, 255, 0, 0.95) inset, 0px 0px 20px rgba(255, 236, 0, 0.95);
+}
+
+.card-deck {
+  background-image: url("../img/wood-plank.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  padding: 30px 40px 30px 30px;
+  width: 340px;
 }
 
 .rotate-container {
-  padding: 3px;
+  float: right;
+  padding: 5px;
   position: relative;
+
 }
 
 .rotate-container .card-front, .rotate-container .card-back {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border: 1px solid gray;
-  border-radius: 3px;
-  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.5);
   height: 100%;
   margin: 0;
-  -ms-transform: perspective(600px) rotateY(0deg);
-  -webkit-transform: perspective(600px) rotateY(0deg);
-  transform: perspective(600px) rotateY(0deg);
+  -ms-transform: perspective(60px) rotateY(0deg);
+  -webkit-transform: perspective(60px) rotateY(0deg);
+  transform: perspective(60px) rotateY(0deg);
   transition: all 0.5s linear 0s;
 }
 
@@ -27,28 +82,29 @@
   position: absolute;
   right: 0;
   top: 0;
-  -ms-transform: perspective(1600px) rotateY(180deg);
-  -webkit-transform: perspective(1600px) rotateY(180deg);
-  transform: perspective(1600px) rotateY(180deg);
+  -ms-transform: perspective(120px) rotateY(180deg);
+  -webkit-transform: perspective(120px) rotateY(180deg);
+  transform: perspective(120px) rotateY(180deg);
 }
 
 .rotate-container .rotate-card-front {
-  -ms-transform: perspective(1600px) rotateY(0deg);
-  -webkit-transform: perspective(1600px) rotateY(0deg);
-  transform: perspective(1600px) rotateY(0deg);
+  -ms-transform: perspective(120px) rotateY(0deg);
+  -webkit-transform: perspective(120px) rotateY(0deg);
+  transform: perspective(120px) rotateY(0deg);
 }
 
 .rotate-container .rotate-card-back {
-  -ms-transform: perspective(1600px) rotateY(-180deg);
-  -webkit-transform: perspective(1600px) rotateY(-180deg);
-  transform: perspective(1600px) rotateY(-180deg);
+  -ms-transform: perspective(120px) rotateY(-180deg);
+  -webkit-transform: perspective(120px) rotateY(-180deg);
+  transform: perspective(120px) rotateY(-180deg);
 }
 
 .card {
+  background: none;
   border-style: none;
-  height: 96px;
+  height: 76px;
   margin: 0;
-  width: 76px;
+  width: 56px;
 }
 
 .card-back {
@@ -63,4 +119,281 @@
   /* http://www.colorzilla.com/gradient-editor/ */
   background: #fcfcfc;
   background: linear-gradient(135deg, #fcfcfc 0%,#f6f6f6 50%,#eeeeee 100%);
+  padding-top: 15px;
+  text-align: center;
+}
+
+.card-front > i {
+  font-size: 16pt;
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  html, body {
+  }
+
+  html {
+    margin: auto;
+    height: 100%;
+    padding-top: 50px;
+  }
+
+  body {
+    background-image: url("../img/blue-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+  }
+
+  .header, .toolbar, .container {
+    margin: 0 auto;
+  }
+
+  .container {
+    margin-top: 50px;
+  }
+
+  .header {
+    align-items: center;
+    background-color: red;
+    clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    margin-top: 50px;
+    vertical-align: middle;
+    width: 45%;
+  }
+
+  .header h1 {
+    font-size: 32pt;
+  }
+
+  .toolbar {
+    padding: 3px;
+    width: 31%;
+    padding-top: 50px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .glow {
+    box-shadow: 0px 1px 40px rgba(0, 255, 0, 0.95) inset, 0px 0px 25px rgba(255, 236, 0, 0.95);
+  }
+
+  .card-deck {
+    background-image: url("../img/wood-plank.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    padding: 20px 75px 20px 75px;
+    width: 600px;
+    height: 600px;
+  }
+
+  .rotate-container {
+    float: none;
+    padding: 10px;
+    position: relative;
+  }
+
+  .rotate-container .card-front, .rotate-container .card-back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid gray;
+    border-radius: 3px;
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    height: 100%;
+    margin: 0;
+    -ms-transform: perspective(600px) rotateY(0deg);
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    transform: perspective(600px) rotateY(0deg);
+    transition: all 0.5s linear 0s;
+  }
+
+  .rotate-container .card-front {
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -ms-transform: perspective(1600px) rotateY(180deg);
+    -webkit-transform: perspective(1600px) rotateY(180deg);
+    transform: perspective(1600px) rotateY(180deg);
+  }
+
+  .rotate-container .rotate-card-front {
+    -ms-transform: perspective(1600px) rotateY(0deg);
+    -webkit-transform: perspective(1600px) rotateY(0deg);
+    transform: perspective(1600px) rotateY(0deg);
+  }
+
+  .rotate-container .rotate-card-back {
+    -ms-transform: perspective(1600px) rotateY(-180deg);
+    -webkit-transform: perspective(1600px) rotateY(-180deg);
+    transform: perspective(1600px) rotateY(-180deg);
+  }
+
+  .card {
+    background: none;
+    border-style: none;
+    height: 108px;
+    margin: 0;
+    width: 88px;
+  }
+
+  .card-back {
+    /* Setting background gradient via colorzilla */
+    /* http://www.colorzilla.com/gradient-editor/ */
+    background: #a7eb31;
+    background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%);
+  }
+
+  .card-front {
+    /* Setting background gradient via colorzilla */
+    /* http://www.colorzilla.com/gradient-editor/ */
+    background: #fcfcfc;
+    background: linear-gradient(135deg, #fcfcfc 0%,#f6f6f6 50%,#eeeeee 100%);
+    padding-top: 23px;
+    text-align: center;
+  }
+
+  .card-front > i {
+    font-size: 28pt;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+
+  html {
+    display: table;
+    margin: auto;
+  }
+
+  body {
+    background-image: url("../img/blue-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .header, .toolbar, .container {
+    margin: 0 auto;
+  }
+
+  .header {
+    margin-top: -40px;
+    align-items: center;
+    background-color: red;
+    clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    vertical-align: middle;
+    width: 45%;
+  }
+
+  .toolbar {
+    padding: 3px;
+    width: 31%;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .glow {
+    box-shadow: 0px 1px 50px rgba(0, 255, 0, 0.95) inset, 0px 0px 35px rgba(255, 236, 0, 0.95);
+  }
+
+  .card-deck {
+    background-image: url("../img/wood-plank.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    padding: 32px 143px 32px 143px;
+    width: 720px;
+  }
+
+  .rotate-container {
+    padding: 10px;
+    position: relative;
+  }
+
+  .rotate-container .card-front, .rotate-container .card-back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid gray;
+    border-radius: 3px;
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    height: 100%;
+    margin: 0;
+    -ms-transform: perspective(600px) rotateY(0deg);
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    transform: perspective(600px) rotateY(0deg);
+    transition: all 0.5s linear 0s;
+  }
+
+  .rotate-container .card-front {
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -ms-transform: perspective(1600px) rotateY(180deg);
+    -webkit-transform: perspective(1600px) rotateY(180deg);
+    transform: perspective(1600px) rotateY(180deg);
+  }
+
+  .rotate-container .rotate-card-front {
+    -ms-transform: perspective(1600px) rotateY(0deg);
+    -webkit-transform: perspective(1600px) rotateY(0deg);
+    transform: perspective(1600px) rotateY(0deg);
+  }
+
+  .rotate-container .rotate-card-back {
+    -ms-transform: perspective(1600px) rotateY(-180deg);
+    -webkit-transform: perspective(1600px) rotateY(-180deg);
+    transform: perspective(1600px) rotateY(-180deg);
+  }
+
+  .card {
+    background: none;
+    border-style: none;
+    height: 108px;
+    margin: 0;
+    width: 88px;
+  }
+
+  .card-back {
+    /* Setting background gradient via colorzilla */
+    /* http://www.colorzilla.com/gradient-editor/ */
+    background: #a7eb31;
+    background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%);
+  }
+
+  .card-front {
+    /* Setting background gradient via colorzilla */
+    /* http://www.colorzilla.com/gradient-editor/ */
+    background: #fcfcfc;
+    background: linear-gradient(135deg, #fcfcfc 0%,#f6f6f6 50%,#eeeeee 100%);
+    padding-top: 23px;
+    text-align: center;
+  }
+
+  .card-front > i {
+    font-size: 28pt;
+  }
 }

@@ -10,6 +10,7 @@ var MAX_EMOJI = EMOJI_LIST.length;
 
 $(function() {
   var registerEventListeners = function() {
+    // Cheat mode for design purposes
     //$("h1").click(showAll());
 
     resetBtn.click(function() {
@@ -48,6 +49,16 @@ $(function() {
           if (clickedCard[0].face === clickedCard[1].face) {
             clickedCard[0].match = true;
             clickedCard[1].match = true;
+
+            setTimeout(function() {
+              $("#" + clickedCard[0].id).parent().toggleClass("glow");
+              $("#" + clickedCard[1].id).parent().toggleClass("glow");
+              setTimeout(function() {
+                $("#" + clickedCard[0].id).parent().toggleClass("glow");
+                $("#" + clickedCard[1].id).parent().toggleClass("glow");
+              }, 500);
+            }, 500);
+
             matchCount++;
             $("#matches").html(matchCount);
 
