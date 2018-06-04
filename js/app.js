@@ -10,6 +10,10 @@ var MAX_EMOJI = EMOJI_LIST.length;
 
 $(function() {
   var registerEventListeners = function() {
+    resetBtn.click(function() {
+      console.log("Reset Button clicked.");
+      resetGame();
+    });
     deck.click(function(e) {
       var target = $(e.target);
       var id = target.attr("id");
@@ -46,16 +50,7 @@ $(function() {
           }
           else {
             setTimeout(function() {
-              for (var i = 0; i < CARD_COUNT; i++){
-                console.log("card: " + cardList[i].id + " card match: " + cardList[i].match);
-                if (!cardList[i].match && cardList[i].faceUp) {
-                  var cardReset = $("#" + cardList[i].id);
-                  cardReset.toggleClass("rotate-card-back");
-                  cardReset.next(".card-front").toggleClass("rotate-card-front");
-                  cardList[i].faceUp = false;
-                  console.log("class: " + cardReset.attr("class"));
-                }
-              }
+              faceDown({shown: false});
             }, 500);
           }
         }
@@ -140,10 +135,45 @@ $(function() {
     return cards;
   }
 
+  var faceDown = function(option) {
+    for (var i = 0; i < CARD_COUNT; i++){
+      console.log("card: " + cardList[i].id + " card match: " + cardList[i].match);
+      if ((!cardList[i].match && cardList[i].faceUp) ||
+        (option.shown && cardList[i].faceUp)) {
+        var cardReset = $("#" + cardList[i].id);
+        cardReset.toggleClass("rotate-card-back");
+        cardReset.next(".card-front").toggleClass("rotate-card-front");
+        cardList[i].faceUp = false;
+        console.log("class: " + cardReset.attr("class"));
+      }
+    }
+  };
+
+  var resetGame = function() {
+    clickedCard = [null, null];
+    clickCount = 0;
+    matchCount = 0;
+    totalClicks = 0;
+    faceDown({shown: true});
+
+    setTimeout(function() {
+      pairs = generatePairs();
+      cardList = dealCards();
+      for (var i = 0; i < CARD_COUNT; i++) {
+        var c = $("#" + cardList[i].id);
+        var cFront = c.next(".card-front").children("i");
+
+        cFront.removeClass(cFront.attr("class"));
+        cFront.addClass("em-svg " + cardList[i].face);
+      }
+    }, 500);
+  };
+
   var pairs = generatePairs();
   var cardList = dealCards();
   var deck = $(".card-deck");
   var card = $("#card-template .rotate-container");
+  var resetBtn = $("#reset");
   var clickedCard = [null, null];
   var clickCount = 0;
   var matchCount = 0;

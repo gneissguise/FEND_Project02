@@ -37,30 +37,27 @@
           to improve your experience and security.</p>
         <![endif]-->
     <div class="container">
-      <header></header>
-      <article></article>
+      <header><h1>Emoji Matchup</h1></header>
+      <article>
+        <div class="toolbar">
+          <button id="reset">Reset Game</button>
+        </div>
+      </article>
+
+      <!-- Hidden card template that we will access in js -->
+      <div id="card-template" class="hidden">
+        <div class="rotate-container">
+          <div class="card">
+            <div class="card-back">
+            </div>
+            <div class="card-front">
+            </div>
+          </div>
+        </div>
+      </div>
 
       <section>
         <div id="card-deck" class="card-deck">
-          <!-- Hidden card template that we will access in js -->
-          <div id="card-template" class="hidden">
-            <div class="rotate-container">
-              <div class="card">
-                <div class="card-back">
-                  <!-- TODO: Add image -->
-                  <!--<img class="card-img" src="img/" alt="Back of card" />-->
-                  <div class="card-image-overlay">
-                  </div>
-                </div>
-                <div class="card-front">
-                  <!-- TODO: Add image -->
-                  <!--<img class="card-img" src="img/" alt="Front of card" />-->
-                  <div class="card-image-overlay">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
