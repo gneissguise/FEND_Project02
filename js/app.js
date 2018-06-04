@@ -28,6 +28,7 @@ $(function() {
         cardSelected.faceUp = true;
         clickedCard[clickCount] = cardSelected;
         clickCount++;
+        totalClicks++;
 
         if (clickCount === 2) {
           clickCount = 0;
@@ -35,6 +36,7 @@ $(function() {
           if (clickedCard[0].face === clickedCard[1].face) {
             clickedCard[0].match = true;
             clickedCard[1].match = true;
+            matchCount++;
           }
           else {
             setTimeout(function() {
@@ -138,6 +140,8 @@ $(function() {
   var card = $("#card-template .rotate-container");
   var clickedCard = [null, null];
   var clickCount = 0;
+  var matchCount = 0;
+  var totalClicks = 0;
 
   for (var i = 0; i < CARD_COUNT; i++) {
     insertCard(i);
