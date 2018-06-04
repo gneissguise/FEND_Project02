@@ -2,10 +2,8 @@
   visibility: hidden;
 }
 
-.card-deck {
-}
-
 .rotate-container {
+  padding: 3px;
   position: relative;
 }
 
