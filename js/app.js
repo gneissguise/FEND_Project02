@@ -1,4 +1,4 @@
-var CARD_COUNT = 12;
+var CARD_COUNT = 16;
 var EMOJI_LIST = ['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
   'em-bacon', 'em-bear', 'em-bee', 'em-beer', 'em-beetle',
   'em-birthday', 'em-bomb', 'em-brain', 'em-burrito', 'em-cactus',
@@ -10,6 +10,8 @@ var MAX_EMOJI = EMOJI_LIST.length;
 
 $(function() {
   var registerEventListeners = function() {
+    //$("h1").click(showAll());
+
     resetBtn.click(function() {
       resetGame();
     });
@@ -112,7 +114,13 @@ $(function() {
 
   var dealCards = function() {
     var cards = [];
-    var pairCount = [0, 0, 0, 0, 0, 0];
+    var pairCount = function() {
+      var a = [];
+      for (var i = 0; i < CARD_COUNT / 2; i++){
+        a.push(0);
+      }
+      return a;
+    }();
 
     for (var i = 0; i < CARD_COUNT; i++) {
       var n = rando(CARD_COUNT);
@@ -201,7 +209,12 @@ $(function() {
     for (var i = 0; i < rating; i++){
       $("#winRating").append("<i class='em-svg em-star'></i>");
     }
-  }
+  };
+
+  var showAll = function() {
+    $(".card-back").toggleClass("rotate-card-back");
+    $(".card-front").toggleClass("rotate-card-front");
+  };
 
   var pairs = generatePairs();
   var cardList = dealCards();
