@@ -57,8 +57,12 @@
   /* Setting background gradient via colorzilla */
   /* http://www.colorzilla.com/gradient-editor/ */
   background: #a7eb31;
-  background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%,#648d1d 100%);
+  background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%);
 }
 
 .card-front {
+  /* Setting background gradient via colorzilla */
+  /* http://www.colorzilla.com/gradient-editor/ */
+  background: #fcfcfc;
+  background: linear-gradient(135deg, #fcfcfc 0%,#f6f6f6 50%,#eeeeee 100%);
 }
