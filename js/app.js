@@ -33,6 +33,7 @@ $(function() {
         clickedCard[clickCount] = cardSelected;
         clickCount++;
         totalClicks++;
+        $("#clicks").html(totalClicks);
 
         if (clickCount === 2) {
           clickCount = 0;
@@ -41,6 +42,7 @@ $(function() {
             clickedCard[0].match = true;
             clickedCard[1].match = true;
             matchCount++;
+            $("#matches").html(matchCount);
 
             if (matchCount === CARD_COUNT / 2) {
               setTimeout(function() { alert("You won!") }, 500);
@@ -153,7 +155,9 @@ $(function() {
     clickedCard = [null, null];
     clickCount = 0;
     matchCount = 0;
+    $("#matches").html(matchCount);
     totalClicks = 0;
+    $("#clicks").html(totalClicks);
     faceDown({shown: true});
 
     setTimeout(function() {
