@@ -11,9 +11,14 @@ var MAX_EMOJI = EMOJI_LIST.length;
 $(function() {
   var registerEventListeners = function() {
     resetBtn.click(function() {
-      console.log("Reset Button clicked.");
       resetGame();
     });
+
+    winModalClose.click(function() {
+      winModal.modal("hide");
+      resetGame();
+    });
+
     deck.click(function(e) {
       var target = $(e.target);
       var id = target.attr("id");
@@ -45,7 +50,9 @@ $(function() {
             $("#matches").html(matchCount);
 
             if (matchCount === CARD_COUNT / 2) {
-              setTimeout(function() { alert("You won!") }, 500);
+              $("#winClicks").html(totalClicks);
+              setStarRating();
+              winModal.modal("show");
               return;
             }
 
@@ -173,11 +180,36 @@ $(function() {
     }, 500);
   };
 
+  var setStarRating = function() {
+    var rating = 0;
+
+    $("#winRating").html("");
+
+    if (totalClicks >= CARD_COUNT && totalClicks < CARD_COUNT + 5) {
+      rating = 4;
+    }
+    else if (totalClicks >= CARD_COUNT + 5 && totalClicks < CARD_COUNT + 10) {
+      rating = 3;
+    }
+    else if (totalClicks >= CARD_COUNT + 10 && totalClicks < CARD_COUNT + 15) {
+      rating = 2;
+    }
+    else if (totalClicks >= CARD_COUNT + 15) {
+      rating = 1;
+    }
+
+    for (var i = 0; i < rating; i++){
+      $("#winRating").append("<i class='em-svg em-star'></i>");
+    }
+  }
+
   var pairs = generatePairs();
   var cardList = dealCards();
   var deck = $(".card-deck");
   var card = $("#card-template .rotate-container");
   var resetBtn = $("#reset");
+  var winModal = $("#winModal");
+  var winModalClose = $("#winModalClose");
   var clickedCard = [null, null];
   var clickCount = 0;
   var matchCount = 0;
