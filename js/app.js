@@ -9,31 +9,33 @@ var EMOJI_LIST = ['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
 var MAX_EMOJI = EMOJI_LIST.length;
 
 $(function() {
+  // Function to register all of my event listeners
   var registerEventListeners = function() {
     // Cheat mode for design purposes
     //$("h1").click(showAll());
 
+    // Reset button listener
     resetBtn.click(function() {
       resetGame();
     });
 
+    // Modal window button listener
     winModalClose.click(function() {
       winModal.modal("hide");
       resetGame();
     });
 
+    // One listener for all of the cards!
     deck.click(function(e) {
       var target = $(e.target);
       var id = target.attr("id");
       var elClass = target.attr("class");
 
-      console.log("Click: " + id + " " + target.attr("class") + " clickCount: " + clickCount);
-
+      // If it's a card, then do things
       if (elClass === "card-back" && clickCount < 2) {
-        console.log("current id: " + id);
-        console.log("findCardById: " + findCardById(id));
         var cardSelected = findCardById(id);
 
+        // Rotation animation
         target.toggleClass("rotate-card-back");
         target.next(".card-front").toggleClass("rotate-card-front");
 
@@ -43,6 +45,7 @@ $(function() {
         totalClicks++;
         $("#clicks").html(totalClicks);
 
+        // if this is the second click, we want to check  for match
         if (clickCount === 2) {
           clickCount = 0;
 
@@ -50,6 +53,7 @@ $(function() {
             clickedCard[0].match = true;
             clickedCard[1].match = true;
 
+            // glow effect
             setTimeout(function() {
               $("#" + clickedCard[0].id).parent().toggleClass("glow");
               $("#" + clickedCard[1].id).parent().toggleClass("glow");
@@ -59,9 +63,11 @@ $(function() {
               }, 500);
             }, 500);
 
+            // up match count
             matchCount++;
             $("#matches").html(matchCount);
 
+            // Winner condition modal
             if (matchCount === CARD_COUNT / 2) {
               $("#winClicks").html(totalClicks);
               setStarRating();
@@ -80,14 +86,17 @@ $(function() {
     });
   };
 
+  // Card's div id generator
   var newCardId = function(n) {
     return "card-" + (n < 10 ? "0" : "") + n.toString();
   };
 
+  // Random number function wrapper
   var rando = function(max) {
     return Math.floor(Math.random() * max);
   };
 
+  // Inserts cards into the deck
   var insertCard = function(id) {
     var c = cardList[id];
     var newCard = card.clone();
@@ -99,6 +108,7 @@ $(function() {
     newCard.appendTo(deck);
   };
 
+  // Builds the matching pairs
   var generatePairs = function() {
     var selected = [];
 
@@ -117,12 +127,14 @@ $(function() {
     return selected;
   }
 
+  // Lookup card object
   var findCardById = function(id) {
     return cardList.find(function(c) {
       return (c.id === id);
     });
   }
 
+  // Deals the cards
   var dealCards = function() {
     var cards = [];
     var pairCount = function() {
@@ -163,6 +175,7 @@ $(function() {
     return cards;
   }
 
+  // Sets the cards face down again
   var faceDown = function(option) {
     for (var i = 0; i < CARD_COUNT; i++){
       console.log("card: " + cardList[i].id + " card match: " + cardList[i].match);
@@ -177,6 +190,7 @@ $(function() {
     }
   };
 
+  // Resets game to new state
   var resetGame = function() {
     clickedCard = [null, null];
     clickCount = 0;
@@ -199,6 +213,7 @@ $(function() {
     }, 500);
   };
 
+  // Generates star rating on a win
   var setStarRating = function() {
     var rating = 0;
 
@@ -222,11 +237,13 @@ $(function() {
     }
   };
 
+  // Shows all cards (for debugging)
   var showAll = function() {
     $(".card-back").toggleClass("rotate-card-back");
     $(".card-front").toggleClass("rotate-card-front");
   };
 
+  // Global declarations
   var pairs = generatePairs();
   var cardList = dealCards();
   var deck = $(".card-deck");
@@ -239,9 +256,11 @@ $(function() {
   var matchCount = 0;
   var totalClicks = 0;
 
+  // Create all of the cards
   for (var i = 0; i < CARD_COUNT; i++) {
     insertCard(i);
   }
 
+  // Then register the listeners!
   registerEventListeners();
 });

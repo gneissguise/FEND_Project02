@@ -18,6 +18,7 @@ body {
 
 }
 
+/* Red ribbon heading */
 .header {
   align-items: center;
   background-color: red;
@@ -41,10 +42,12 @@ body {
   display: none;
 }
 
+/* effect used when cards match */
 .glow {
   box-shadow: 0px 1px 35px rgba(0, 255, 0, 0.95) inset, 0px 0px 20px rgba(255, 236, 0, 0.95);
 }
 
+/* Hardwood table / deck */
 .card-deck {
   background-image: url("../img/wood-plank.jpg");
   background-position: center;
@@ -55,6 +58,7 @@ body {
   width: 340px;
 }
 
+/* Card lives in this container */
 .rotate-container {
   float: right;
   padding: 5px;
@@ -62,6 +66,7 @@ body {
 
 }
 
+/* Rotation magic */
 .rotate-container .card-front, .rotate-container .card-back {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -76,6 +81,7 @@ body {
   transition: all 0.5s linear 0s;
 }
 
+/* Rotation magic */
 .rotate-container .card-front {
   left: 0;
   margin: 0;
@@ -87,18 +93,21 @@ body {
   transform: perspective(120px) rotateY(180deg);
 }
 
+/* Rotation magic */
 .rotate-container .rotate-card-front {
   -ms-transform: perspective(120px) rotateY(0deg);
   -webkit-transform: perspective(120px) rotateY(0deg);
   transform: perspective(120px) rotateY(0deg);
 }
 
+/* Rotation magic */
 .rotate-container .rotate-card-back {
   -ms-transform: perspective(120px) rotateY(-180deg);
   -webkit-transform: perspective(120px) rotateY(-180deg);
   transform: perspective(120px) rotateY(-180deg);
 }
 
+/* individual card */
 .card {
   background: none;
   border-style: none;
@@ -107,6 +116,7 @@ body {
   width: 56px;
 }
 
+/* card backing */
 .card-back {
   /* Setting background gradient via colorzilla */
   /* http://www.colorzilla.com/gradient-editor/ */
@@ -114,6 +124,7 @@ body {
   background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%);
 }
 
+/* front of card */
 .card-front {
   /* Setting background gradient via colorzilla */
   /* http://www.colorzilla.com/gradient-editor/ */
