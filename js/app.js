@@ -87,6 +87,10 @@ $(function() {
           }
         }
       }
+      // Start timer on first click
+      if (totalClicks === 0) {
+          toggleTimer();
+      }
     });
   };
 
@@ -202,6 +206,7 @@ $(function() {
     totalClicks = 0;
     $("#clicks").html(totalClicks);
     faceDown({shown: true});
+    toggleTimer();
 
     setTimeout(function() {
       pairs = generatePairs();
@@ -250,6 +255,23 @@ $(function() {
     $(".card-front").toggleClass("rotate-card-front");
   };
 
+  // Toggle game timer
+  var toggleTimer = function() {
+    // If the timer exists, then turn it off.
+    if (gameTimer != null) {
+      clearInterval(gameTimer);
+      gameTimer = null;
+      timeElapsed = 0;
+      $("#timer").html(timeElapsed.toString() + " seconds");
+    }
+    else {
+      gameTimer = setInterval(function() {
+        timeElapsed++;
+        $("#timer").html(timeElapsed.toString() + " seconds");
+      }, 1000);
+    }
+  }
+
   // Global declarations
   var pairs = generatePairs();
   var cardList = dealCards();
@@ -262,6 +284,8 @@ $(function() {
   var clickCount = 0;
   var matchCount = 0;
   var totalClicks = 0;
+  var gameTimer = null;
+  var timeElapsed = 0;
 
   // Create all of the cards
   for (var i = 0; i < CARD_COUNT; i++) {
