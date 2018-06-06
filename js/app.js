@@ -1,4 +1,5 @@
 var CARD_COUNT = 16;
+var PAIR_COUNT = CARD_COUNT / 2;
 var EMOJI_LIST = ['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
   'em-bacon', 'em-bear', 'em-bee', 'em-beer', 'em-beetle',
   'em-birthday', 'em-bomb', 'em-brain', 'em-burrito', 'em-cactus',
@@ -7,6 +8,7 @@ var EMOJI_LIST = ['em-8ball', 'em-alien', 'em-apple', 'em-avocado',
   'em-heart_eyes', 'em-jack_o_lantern', 'em-joy', 'em-kiss',
   'em-monkey_face', 'em-mushroom', 'em-palm_tree', 'em-pizza'];
 var MAX_EMOJI = EMOJI_LIST.length;
+var STAR_EMOJI = "<i class='em-svg em-star'></i>";
 
 $(function() {
   // Function to register all of my event listeners
@@ -17,6 +19,7 @@ $(function() {
     // Reset button listener
     resetBtn.click(function() {
       resetGame();
+      setStarRating();
     });
 
     // Modal window button listener
@@ -49,6 +52,7 @@ $(function() {
           clickCount = 0;
           totalClicks++;
           $("#clicks").html(totalClicks);
+          setStarRating();
 
           if (clickedCard[0].face === clickedCard[1].face) {
             clickedCard[0].match = true;
@@ -69,9 +73,8 @@ $(function() {
             $("#matches").html(matchCount);
 
             // Winner condition modal
-            if (matchCount === CARD_COUNT / 2) {
+            if (matchCount === PAIR_COUNT) {
               $("#winClicks").html(totalClicks);
-              setStarRating();
               winModal.modal("show");
               return;
             }
@@ -113,7 +116,7 @@ $(function() {
   var generatePairs = function() {
     var selected = [];
 
-    for (var i = 0; i < (CARD_COUNT / 2); i++) {
+    for (var i = 0; i < (PAIR_COUNT); i++) {
       var n = rando(MAX_EMOJI);
 
       if (selected.length !== 0 &&
@@ -140,7 +143,7 @@ $(function() {
     var cards = [];
     var pairCount = function() {
       var a = [];
-      for (var i = 0; i < CARD_COUNT / 2; i++){
+      for (var i = 0; i < PAIR_COUNT; i++){
         a.push(0);
       }
       return a;
@@ -148,14 +151,14 @@ $(function() {
 
     for (var i = 0; i < CARD_COUNT; i++) {
       var n = rando(CARD_COUNT);
-      var p = rando(CARD_COUNT / 2);
+      var p = rando(PAIR_COUNT);
 
       if (i === 0) {
         pairCount[p] = 1;
       }
       else {
         while (pairCount[p] === 2) {
-          p = rando(CARD_COUNT / 2);
+          p = rando(PAIR_COUNT);
         }
         pairCount[p]++;
 
@@ -179,7 +182,6 @@ $(function() {
   // Sets the cards face down again
   var faceDown = function(option) {
     for (var i = 0; i < CARD_COUNT; i++){
-      console.log("card: " + cardList[i].id + " card match: " + cardList[i].match);
       if ((!cardList[i].match && cardList[i].faceUp) ||
         (option.shown && cardList[i].faceUp)) {
         var cardReset = $("#" + cardList[i].id);
@@ -219,22 +221,26 @@ $(function() {
     var rating = 0;
 
     $("#winRating").html("");
+    $("#stars").html("");
 
-    if (totalClicks >= CARD_COUNT && totalClicks < CARD_COUNT + 5) {
+    if (totalClicks < PAIR_COUNT + 5) {
       rating = 4;
     }
-    else if (totalClicks >= CARD_COUNT + 5 && totalClicks < CARD_COUNT + 10) {
+    else if (totalClicks >= PAIR_COUNT + 5 && totalClicks < PAIR_COUNT + 10) {
       rating = 3;
     }
-    else if (totalClicks >= CARD_COUNT + 10 && totalClicks < CARD_COUNT + 15) {
+    else if (totalClicks >= PAIR_COUNT + 10 && totalClicks < PAIR_COUNT + 15) {
       rating = 2;
     }
-    else if (totalClicks >= CARD_COUNT + 15) {
+    else if (totalClicks >= PAIR_COUNT + 15) {
       rating = 1;
     }
 
+    console.log("clicks: " + totalClicks);
+    console.log("rating: " + rating);
     for (var i = 0; i < rating; i++){
-      $("#winRating").append("<i class='em-svg em-star'></i>");
+      $("#winRating").append(STAR_EMOJI);
+      $("#stars").append(STAR_EMOJI);
     }
   };
 
