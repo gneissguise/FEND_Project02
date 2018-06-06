@@ -60,12 +60,14 @@ $(function() {
 
             // glow effect
             setTimeout(function() {
-              $("#" + clickedCard[0].id).parent().toggleClass("glow");
-              $("#" + clickedCard[1].id).parent().toggleClass("glow");
-              setTimeout(function() {
-                $("#" + clickedCard[0].id).parent().toggleClass("glow");
-                $("#" + clickedCard[1].id).parent().toggleClass("glow");
-              }, 500);
+              function(card1, card2){
+                card1.toggleClass("glow");
+                card2.toggleClass("glow");
+                setTimeout(function() {
+                  card1.toggleClass("glow");
+                  card2.toggleClass("glow");
+                }, 500);
+              }($("#" + clickedCard[0].id).parent(), $("#" + clickedCard[1].id).parent())
             }, 500);
 
             // up match count

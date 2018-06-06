@@ -60,47 +60,52 @@
       </div>
     </div>
 
-    <!-- Main Container -->
-    <div class="container">
-      <!-- Ribbon heading -->
-      <div class="header">
-        <h1>
-          <i class="em em-grinning_face_with_one_large_and_one_small_eye"></i>
-          Emoji Matchup
-        </h1>
-      </div>
+      <!-- Main Container -->
+      <div class="container">
+        <!-- Ribbon heading -->
+        <div class="header">
+          <h1>
+            <i class="em em-grinning_face_with_one_large_and_one_small_eye"></i>
+            Emoji Matchup
+          </h1>
+        </div>
 
-      <!-- reset button and score -->
-      <div class="toolbar">
-        <button class="btn" id="reset">Reset Game</button>
-        <span class="stats">
-          Clicks: <span id="clicks">0</span>
-          Matches: <span id="matches">0</span>
-          <span id="stars"><i class='em-svg em-star'></i>
-            <i class='em-svg em-star'></i>
-            <i class='em-svg em-star'></i>
-            <i class='em-svg em-star'></i>
-          </span>
-          <span id="timer"></span> 
-        </span>
-      </div>
-      <!-- Hidden card template that we will access in js -->
-      <div id="card-template" class="hidden">
-        <div class="rotate-container">
-          <div class="card">
-            <div class="card-back">
+        <!-- reset button and score -->
+        <div class="toolbar">
+          <button class="btn" id="reset">Reset</button>
+          <span class="stats">
+            <div>
+              Clicks: <span id="clicks">0</span>
+              Matches: <span id="matches">0</span>
             </div>
-            <div class="card-front">
+            <div>
+              <span id="stars"><i class='em-svg em-star'></i>
+                <i class='em-svg em-star'></i>
+                <i class='em-svg em-star'></i>
+                <i class='em-svg em-star'></i>
+              </span>
+              <span id="timer">0 seconds</span>
+            </div>
+          </span>
+        </div>
+        <!-- Hidden card template that we will access in js -->
+        <div id="card-template" class="hidden">
+          <div class="rotate-container">
+            <div class="card">
+              <div class="card-back">
+              </div>
+              <div class="card-front">
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- cards are layed out here -->
-      <section>
-        <div id="card-deck" class="card-deck">
-        </div>
-      </section>
+        <!-- cards are layed out here -->
+        <section>
+          <div id="card-deck" class="card-deck">
+          </div>
+        </section>
+      </div>
 
       <!-- jQuery first, then Tether, then Bootstrap JS. -->
       <script
@@ -115,6 +120,5 @@
               crossorigin="anonymous"></script>
       <!-- Custom app js -->
       <script src="js/app.js"></script>
-    </div>
   </body>
 </html>
