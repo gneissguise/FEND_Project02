@@ -42,12 +42,13 @@ $(function() {
         cardSelected.faceUp = true;
         clickedCard[clickCount] = cardSelected;
         clickCount++;
-        totalClicks++;
-        $("#clicks").html(totalClicks);
 
-        // if this is the second click, we want to check  for match
+        // if this is the second click, we want to check for a match
         if (clickCount === 2) {
+          // Reset the click count, and update the totalClicks
           clickCount = 0;
+          totalClicks++;
+          $("#clicks").html(totalClicks);
 
           if (clickedCard[0].face === clickedCard[1].face) {
             clickedCard[0].match = true;
