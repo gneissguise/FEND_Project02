@@ -46,12 +46,10 @@
         	</div>
         	<div class="modal-body">
 		        <p>Final Score:</p>
-            <div>
-              Total Clicks: <span id="winClicks"></span>
-            </div>
-            <div>
-              Rating: <span id="winRating"></span>
-            </div>
+            <div id="scoreRow1"></div>
+            <div id="scoreRow2"></div>
+            <div id="scoreRow3"></div>
+            <div id="scoreRow4"></div>
 	        </div>
         	<div class="modal-footer">
         		<button id="winModalClose" class="btn">Play Again!</button>
@@ -72,7 +70,7 @@
 
         <!-- reset button and score -->
         <div class="toolbar">
-          
+
             <div id="score-div">
               <h3>Score</h3>
             </div>
@@ -86,7 +84,7 @@
             </div>
 
           <div id="reset-div">
-            <button class="btn" id="reset">Reset Board</button>
+            <button class="btn reset" id="reset">Reset Board</button>
           </div>
         </div>
         <!-- Hidden card template that we will access in js -->

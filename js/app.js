@@ -19,13 +19,11 @@ $(function() {
     // Reset button listener
     resetBtn.click(function() {
       resetGame();
-      setStarRating();
     });
 
     // Modal window button listener
     winModalClose.click(function() {
       winModal.modal("hide");
-      resetGame();
     });
 
     // One listener for all of the cards!
@@ -58,7 +56,6 @@ $(function() {
             clickedCard[0].match = true;
             clickedCard[1].match = true;
 
-
             // glow effect
             setTimeout(function() {
               var card1 = $("#" + clickedCard[0].id).next(".card-front");
@@ -78,9 +75,21 @@ $(function() {
 
             // Winner condition modal
             if (matchCount === PAIR_COUNT) {
-              $("#winClicks").html(totalClicks);
+              var finalTimeElapsed = timeElapsed;
+              var clickCountHtml = $("#click-div").text();
+              var matchCountHtml = $("#match-div").text();
+              var starCountHtml = $("#star-div").text();
+
+              turnOffTimer();
+
+              $("#scoreRow1").append(clickCountHtml);
+              $("#scoreRow2").append(matchCountHtml);
+              $("#scoreRow3").append(formatTime(finalTimeElapsed));
+              $("#scoreRow4").append(starCountHtml);
               winModal.modal("show");
-              return;
+              setTimeout(function() {
+                resetBtn.trigger("click");
+              }, 300);
             }
 
           }
@@ -196,7 +205,6 @@ $(function() {
         cardReset.toggleClass("rotate-card-back");
         cardReset.next(".card-front").toggleClass("rotate-card-front");
         cardList[i].faceUp = false;
-        console.log("class: " + cardReset.attr("class"));
       }
     }
   };
@@ -210,7 +218,10 @@ $(function() {
     totalClicks = 0;
     $("#clicks").html(totalClicks);
     faceDown({shown: true});
-    //turnOffTimer();
+    timeElapsed = 0;
+    $("#timer").html(formatTime(timeElapsed));
+    turnOffTimer();
+    setStarRating();
 
     setTimeout(function() {
       pairs = generatePairs();
@@ -245,10 +256,7 @@ $(function() {
       rating = 1;
     }
 
-    console.log("clicks: " + totalClicks);
-    console.log("rating: " + rating);
     for (var i = 0; i < rating; i++){
-      $("#winRating").append(STAR_EMOJI);
       $("#stars").append(STAR_EMOJI);
     }
   };

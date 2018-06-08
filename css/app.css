@@ -47,7 +47,7 @@ body {
 break-before: always;
 }
 
-.btn {
+.btn .reset{
   font-size: 0.75rem;
 }
 
@@ -176,6 +176,17 @@ break-before: always;
   font-size: 16pt;
 }
 
+.modal-header {
+  background: rgb(255,255,255);
+  background: -webkit-linear-gradient(rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%);
+}
+
+#winModalLabel {
+  margin: 0 auto;
+}
+
 /* Tablets 768 px */
 @media (min-width: 768px) {
 
@@ -246,7 +257,7 @@ break-before: always;
     padding: 0.1875rem;
   }
 
-  .btn {
+  .btn .reset {
     margin: 0 auto;
     background-color: transparent;
     color: white;
