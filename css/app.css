@@ -1,41 +1,64 @@
-html {
-  margin: auto;
+html, body {
+  width: 100%;
   height: 100%;
 }
 
 body {
-  background-image: none;
-  background-color: #6495ED;
-  vertical-align: middle;
-}
-
-.header, .toolbar, .container {
-  margin: 0 auto;
+  background-image: url("../img/blue-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0.625rem;
 }
 
 .container{
-  padding: 5px;
-
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 22.5rem;
 }
 
 /* Red ribbon heading */
 .header {
-  align-items: center;
   background-color: red;
+  background: linear-gradient(to bottom, #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%);
   clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
-  display: flex;
-  justify-content: center;
-  padding-top: 2px;
-  vertical-align: middle;
+  margin-top: 0.625rem;
   width: 100%;
 }
+
 .header h1 {
-  font-size: 22pt;
+  font-size: 16pt;
+  text-align: center;
+}
+
+#score-div {
+  display: none;
+}
+
+#click-div, #match-div, #timer-div, #reset-div {
+  font-size: 0.75rem;
+}
+
+#star-div{
+break-before: always;
+}
+
+.btn .reset{
+  font-size: 0.75rem;
 }
 
 .toolbar {
-  padding: 3px;
+  align-content: space-between;
+  display: flex;
+  flex-flow: column wrap;
+  height: 4.5rem;
+  padding: 0.1875rem;
   width: 100%;
+  margin: 0 auto;
 }
 
 .hidden {
@@ -44,7 +67,20 @@ body {
 
 /* effect used when cards match */
 .glow {
-  box-shadow: 0px 1px 35px rgba(0, 255, 0, 0.95) inset, 0px 0px 20px rgba(255, 236, 0, 0.95);
+  animation: glow-animation 600ms ease-out infinite alternate;
+  box-shadow: 0 0 0.3125rem rgba(255, 236, 0, 0);
+
+}
+
+@keyframes glow-animation {
+    0% {
+		border-color: #fe0;
+		box-shadow: 0 0 0.3125rem rgba(255,236,0,.2), inset 0 0 0.3125rem rgba(255,236,0,.1), 0 0.125rem 0 #000;
+    }
+    100% {
+		border-color: #ff0;
+		box-shadow: 0 0 1.25rem rgba(255,255,0,.95), inset 0 0 0.625rem rgba(255,255,0,.7), 0 0.125rem 0 #000;
+    }
 }
 
 /* Hardwood table / deck */
@@ -53,16 +89,18 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 400px;
-  padding: 30px 40px 30px 30px;
-  width: 340px;
+  overflow: auto;
+  padding: 1.875rem 1.875rem 1.875rem 1.875rem;
+  width: 100%;
+  box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(0, 0, 0, 0.95);
+  border-radius: 0.3125rem;
 }
 
 /* Card lives in this container */
 .rotate-container {
-  float: right;
-  padding: 5px;
-  position: relative;
+  display: inline-block;
+  padding: 0.3125rem;
+  /* position: relative; */
 
 }
 
@@ -70,14 +108,14 @@ body {
 .rotate-container .card-front, .rotate-container .card-back {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border: 1px solid gray;
-  border-radius: 2px;
-  box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.5);
+  border: 0.0625rem solid gray;
+  border-radius: 0.125rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.5);
   height: 100%;
   margin: 0;
-  -ms-transform: perspective(60px) rotateY(0deg);
-  -webkit-transform: perspective(60px) rotateY(0deg);
-  transform: perspective(60px) rotateY(0deg);
+  -ms-transform: perspective(3.75rem) rotateY(0deg);
+  -webkit-transform: perspective(3.75rem) rotateY(0deg);
+  transform: perspective(3.75rem) rotateY(0deg);
   transition: all 0.5s linear 0s;
 }
 
@@ -88,32 +126,32 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  -ms-transform: perspective(120px) rotateY(180deg);
-  -webkit-transform: perspective(120px) rotateY(180deg);
-  transform: perspective(120px) rotateY(180deg);
+  -ms-transform: perspective(7.5rem) rotateY(180deg);
+  -webkit-transform: perspective(7.5rem) rotateY(180deg);
+  transform: perspective(7.5rem) rotateY(180deg);
 }
 
 /* Rotation magic */
 .rotate-container .rotate-card-front {
-  -ms-transform: perspective(120px) rotateY(0deg);
-  -webkit-transform: perspective(120px) rotateY(0deg);
-  transform: perspective(120px) rotateY(0deg);
+  -ms-transform: perspective(7.5rem) rotateY(0deg);
+  -webkit-transform: perspective(7.5rem) rotateY(0deg);
+  transform: perspective(7.5rem) rotateY(0deg);
 }
 
 /* Rotation magic */
 .rotate-container .rotate-card-back {
-  -ms-transform: perspective(120px) rotateY(-180deg);
-  -webkit-transform: perspective(120px) rotateY(-180deg);
-  transform: perspective(120px) rotateY(-180deg);
+  -ms-transform: perspective(7.5rem) rotateY(-180deg);
+  -webkit-transform: perspective(7.5rem) rotateY(-180deg);
+  transform: perspective(7.5rem) rotateY(-180deg);
 }
 
 /* individual card */
 .card {
   background: none;
   border-style: none;
-  height: 76px;
+  height: 4.75rem;
   margin: 0;
-  width: 56px;
+  width: 3.5rem;
 }
 
 /* card backing */
@@ -130,7 +168,7 @@ body {
   /* http://www.colorzilla.com/gradient-editor/ */
   background: #fcfcfc;
   background: linear-gradient(135deg, #fcfcfc 0%,#f6f6f6 50%,#eeeeee 100%);
-  padding-top: 15px;
+  padding-top: 1.3125rem;
   text-align: center;
 }
 
@@ -138,139 +176,145 @@ body {
   font-size: 16pt;
 }
 
-/* Medium devices (desktops, 992px and up) */
+.modal-header {
+  background: rgb(255,255,255);
+  background: -webkit-linear-gradient(rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%);
+}
+
+#winModalLabel {
+  margin: 0 auto;
+}
+
+/* Tablets 768 px */
+@media (min-width: 768px) {
+
+}
+
+/* Medium devices (desktops, 990.125rem and up) */
 @media (min-width: 992px) {
-  html, body {
-  }
-
-  html {
-    margin: auto;
-    height: 100%;
-    padding-top: 50px;
-  }
-
-  body {
-    background-image: url("../img/blue-bg.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    vertical-align: middle;
-  }
-
-  .header, .toolbar, .container {
-    margin: 0 auto;
-  }
-
   .container {
-    margin-top: 50px;
+    width: 37.5rem;
+    height: 37.5rem;
   }
 
   .header {
-    align-items: center;
-    background-color: red;
-    clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
-    display: flex;
-    justify-content: center;
-    padding-top: 5px;
-    margin-top: 50px;
-    vertical-align: middle;
-    width: 45%;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
   }
 
   .header h1 {
-    font-size: 32pt;
+    font-size: 24pt;
+    padding: 0.1875rem;
+  }
+
+  #click-div, #match-div, #timer-div, #reset-div {
+    font-size: 16pt;
+  }
+
+  #score-div {
+    display: block;
+  }
+
+  #reset-div {
+    margin: 0 auto;
+    text-align: center;
+    bottom: 0;
+    position:relative;
+  }
+
+  #star-div{
+    break-before: avoid-column;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 1.65rem;
+    padding-bottom: 1.65rem;
+  }
+
+  #score-div {
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 1.65rem;
   }
 
   .toolbar {
-    padding: 3px;
-    width: 31%;
-    padding-top: 50px;
+    display:  block;
+    padding: 0.1875rem 0.1875rem 1.3125rem 0.1875rem;
+    height:auto;
+    margin: 0.625rem;
+    width: 12.5rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: 0.125rem solid rgba(255, 255, 255, 0.85);
+    border-radius: 0.1875rem;
+    color: white;
   }
 
-  .hidden {
-    display: none;
+  .toolbar div {
+    padding: 0.1875rem;
   }
 
-  .glow {
-    box-shadow: 0px 1px 40px rgba(0, 255, 0, 0.95) inset, 0px 0px 25px rgba(255, 236, 0, 0.95);
+  .btn .reset {
+    margin: 0 auto;
+    background-color: transparent;
+    color: white;
+    border: 0.125rem solid rgba(255, 255, 255, 0.85);
+    border-radius: 0.1875rem;
+    font-size: 1.125rem;
+  }
+
+  section {
+    padding-left: .65rem;
+    padding-right: .65rem;
   }
 
   .card-deck {
-    background-image: url("../img/wood-plank.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0 auto;
-    padding: 20px 75px 20px 75px;
-    width: 600px;
-    height: 600px;
+    padding: 1.3125rem 4.5rem 1.3125rem 4.5rem;
   }
 
   .rotate-container {
-    float: none;
-    padding: 10px;
+    padding: 0.625rem;
     position: relative;
   }
 
   .rotate-container .card-front, .rotate-container .card-back {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid gray;
-    border-radius: 3px;
-    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
-    height: 100%;
-    margin: 0;
-    -ms-transform: perspective(600px) rotateY(0deg);
-    -webkit-transform: perspective(600px) rotateY(0deg);
-    transform: perspective(600px) rotateY(0deg);
-    transition: all 0.5s linear 0s;
+    border-radius: 0.1875rem;
+    box-shadow: 0.375rem 0.375rem 0.375rem rgba(0, 0, 0, 0.5);
+    -ms-transform: perspective(37.5rem) rotateY(0deg);
+    -webkit-transform: perspective(37.5rem) rotateY(0deg);
+    transform: perspective(37.5rem) rotateY(0deg);
   }
 
   .rotate-container .card-front {
-    left: 0;
-    margin: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    -ms-transform: perspective(1600px) rotateY(180deg);
-    -webkit-transform: perspective(1600px) rotateY(180deg);
-    transform: perspective(1600px) rotateY(180deg);
+    -ms-transform: perspective(137.5rem) rotateY(180deg);
+    -webkit-transform: perspective(137.5rem) rotateY(180deg);
+    transform: perspective(137.5rem) rotateY(180deg);
   }
 
   .rotate-container .rotate-card-front {
-    -ms-transform: perspective(1600px) rotateY(0deg);
-    -webkit-transform: perspective(1600px) rotateY(0deg);
-    transform: perspective(1600px) rotateY(0deg);
+    -ms-transform: perspective(137.5rem) rotateY(0deg);
+    -webkit-transform: perspective(137.5rem) rotateY(0deg);
+    transform: perspective(137.5rem) rotateY(0deg);
   }
 
   .rotate-container .rotate-card-back {
-    -ms-transform: perspective(1600px) rotateY(-180deg);
-    -webkit-transform: perspective(1600px) rotateY(-180deg);
-    transform: perspective(1600px) rotateY(-180deg);
+    -ms-transform: perspective(137.5rem) rotateY(-180deg);
+    -webkit-transform: perspective(137.5rem) rotateY(-180deg);
+    transform: perspective(137.5rem) rotateY(-180deg);
   }
 
   .card {
-    background: none;
-    border-style: none;
-    height: 108px;
-    margin: 0;
-    width: 88px;
+    height: 6.25rem;
+    width: 5.0rem;
   }
 
-  .card-back {
-    /* Setting background gradient via colorzilla */
-    /* http://www.colorzilla.com/gradient-editor/ */
-    background: #a7eb31;
-    background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%);
-  }
 
   .card-front {
-    /* Setting background gradient via colorzilla */
-    /* http://www.colorzilla.com/gradient-editor/ */
-    background: #fcfcfc;
-    background: linear-gradient(135deg, #fcfcfc 0%,#f6f6f6 50%,#eeeeee 100%);
-    padding-top: 23px;
-    text-align: center;
+    padding-top: 1.625rem;
   }
 
   .card-front > i {
@@ -280,131 +324,21 @@ body {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  html, body {
-    height: 100%;
-    width: 100%;
-  }
-
-  html {
-    display: table;
-    margin: auto;
-  }
-
-  body {
-    background-image: url("../img/blue-bg.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .header, .toolbar, .container {
-    margin: 0 auto;
+  .container {
+    width: 46.875rem;
   }
 
   .header {
-    margin-top: -40px;
-    align-items: center;
-    background-color: red;
-    clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
-    display: flex;
-    justify-content: center;
-    padding-top: 5px;
-    vertical-align: middle;
-    width: 45%;
+    margin-top: -1.25rem;
+    margin-bottom: 1.25rem;
   }
 
-  .toolbar {
-    padding: 3px;
-    width: 31%;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .glow {
-    box-shadow: 0px 1px 50px rgba(0, 255, 0, 0.95) inset, 0px 0px 35px rgba(255, 236, 0, 0.95);
+  #score-div {
+    display: block;
   }
 
   .card-deck {
-    background-image: url("../img/wood-plank.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0 auto;
-    padding: 32px 143px 32px 143px;
-    width: 720px;
-  }
-
-  .rotate-container {
-    padding: 10px;
-    position: relative;
-  }
-
-  .rotate-container .card-front, .rotate-container .card-back {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid gray;
-    border-radius: 3px;
-    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
-    height: 100%;
-    margin: 0;
-    -ms-transform: perspective(600px) rotateY(0deg);
-    -webkit-transform: perspective(600px) rotateY(0deg);
-    transform: perspective(600px) rotateY(0deg);
-    transition: all 0.5s linear 0s;
-  }
-
-  .rotate-container .card-front {
-    left: 0;
-    margin: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    -ms-transform: perspective(1600px) rotateY(180deg);
-    -webkit-transform: perspective(1600px) rotateY(180deg);
-    transform: perspective(1600px) rotateY(180deg);
-  }
-
-  .rotate-container .rotate-card-front {
-    -ms-transform: perspective(1600px) rotateY(0deg);
-    -webkit-transform: perspective(1600px) rotateY(0deg);
-    transform: perspective(1600px) rotateY(0deg);
-  }
-
-  .rotate-container .rotate-card-back {
-    -ms-transform: perspective(1600px) rotateY(-180deg);
-    -webkit-transform: perspective(1600px) rotateY(-180deg);
-    transform: perspective(1600px) rotateY(-180deg);
-  }
-
-  .card {
-    background: none;
-    border-style: none;
-    height: 108px;
-    margin: 0;
-    width: 88px;
-  }
-
-  .card-back {
-    /* Setting background gradient via colorzilla */
-    /* http://www.colorzilla.com/gradient-editor/ */
-    background: #a7eb31;
-    background: linear-gradient(135deg, #a7eb31 0%,#8bc428 50%,#698826 100%);
-  }
-
-  .card-front {
-    /* Setting background gradient via colorzilla */
-    /* http://www.colorzilla.com/gradient-editor/ */
-    background: #fcfcfc;
-    background: linear-gradient(135deg, #fcfcfc 0%,#f6f6f6 50%,#eeeeee 100%);
-    padding-top: 23px;
-    text-align: center;
-  }
-
-  .card-front > i {
-    font-size: 28pt;
+    padding: 2.125rem 9.125rem 2.125rem 9.125rem;
   }
 }
