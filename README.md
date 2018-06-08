@@ -18,11 +18,11 @@ again then you may click the reset button.  The board will reset and the cards
 will be shuffled!
 
 ## Dependencies:
-*Google Fonts* <https://fonts.google.com/>
-*Bootstrap 4.0* <https://getbootstrap.com/>
-*Tether* <http://tether.io/>
-*Emoji Css* <https://afeld.github.io/emoji-css/>
-*jQuery 3.3.1* <https://jquery.com/>
+* __Google Fonts__: &lt;<https://fonts.google.com/>&gt;
+* __Bootstrap 4.0__: &lt;<https://getbootstrap.com/>&gt;
+* __Tether__: &lt;<http://tether.io/>&gt;
+* __Emoji Css__: &lt;<https://afeld.github.io/emoji-css/>&gt;
+* __jQuery 3.3.1__: &lt;<https://jquery.com/>&gt;
 
 
 
