@@ -50,7 +50,7 @@ $(() => {
           clickCount = 0;
           totalClicks++;
           $("#clicks").html(totalClicks);
-          setStarRating();
+          setStarRating("#stars");
 
           if (clickedCard[0].face === clickedCard[1].face) {
             clickedCard[0].match = true;
@@ -78,14 +78,15 @@ $(() => {
               const finalTimeElapsed = timeElapsed;
               const clickCountHtml = $("#click-div").text();
               const matchCountHtml = $("#match-div").text();
-              const starCountHtml = $("#star-div").text();
+              //const starCountHtml = $("#star-div").text();
 
               turnOffTimer();
 
               $("#scoreRow1").append(clickCountHtml);
               $("#scoreRow2").append(matchCountHtml);
               $("#scoreRow3").append(formatTime(finalTimeElapsed));
-              $("#scoreRow4").append(starCountHtml);
+              //$("#scoreRow4").append(starCountHtml);
+              setStarCount("#scoreRow4");
               winModal.modal("show");
               setTimeout(() => {
                 resetBtn.trigger("click");
@@ -221,7 +222,7 @@ $(() => {
     timeElapsed = 0;
     $("#timer").html(formatTime(timeElapsed));
     turnOffTimer();
-    setStarRating();
+    setStarRating("#stars");
 
     setTimeout(() => {
       pairs = generatePairs();
@@ -237,11 +238,10 @@ $(() => {
   };
 
   // Generates star rating on a win
-  const setStarRating = () => {
+  const setStarRating = (id) => {
     let rating = 0;
 
-    $("#winRating").html("");
-    $("#stars").html("");
+    $(id).html("");
 
     if (totalClicks < PAIR_COUNT + 5) {
       rating = 4;
@@ -257,7 +257,7 @@ $(() => {
     }
 
     for (let i = 0; i < rating; i++){
-      $("#stars").append(STAR_EMOJI);
+      $(id).append(STAR_EMOJI);
     }
   };
 
