@@ -58,17 +58,19 @@ $(function() {
             clickedCard[0].match = true;
             clickedCard[1].match = true;
 
+
             // glow effect
             setTimeout(function() {
-              function(card1, card2){
+              var card1 = $("#" + clickedCard[0].id).next(".card-front");
+              var card2 = $("#" + clickedCard[1].id).next(".card-front");
+
+              card1.toggleClass("glow");
+              card2.toggleClass("glow");
+              setTimeout(function() {
                 card1.toggleClass("glow");
                 card2.toggleClass("glow");
-                setTimeout(function() {
-                  card1.toggleClass("glow");
-                  card2.toggleClass("glow");
-                }, 500);
-              }($("#" + clickedCard[0].id).parent(), $("#" + clickedCard[1].id).parent())
-            }, 500);
+              }, 1205);
+            }, 0);
 
             // up match count
             matchCount++;
@@ -88,10 +90,10 @@ $(function() {
             }, 500);
           }
         }
-      }
-      // Start timer on first click
-      if (totalClicks === 0) {
-          toggleTimer();
+        // Start timer on first click
+        if (totalClicks === 0) {
+            toggleTimer();
+        }
       }
     });
   };
@@ -208,7 +210,7 @@ $(function() {
     totalClicks = 0;
     $("#clicks").html(totalClicks);
     faceDown({shown: true});
-    toggleTimer();
+    //turnOffTimer();
 
     setTimeout(function() {
       pairs = generatePairs();
@@ -257,19 +259,32 @@ $(function() {
     $(".card-front").toggleClass("rotate-card-front");
   };
 
+  var formatTime = function(t) {
+    var date = new Date(null);
+    date.setSeconds(t); // specify value for SECONDS here
+
+    var result = date.toISOString().substr(11, 8);
+
+    return "Time: " + result;
+  }
+
+  var turnOffTimer = function() {
+    clearInterval(gameTimer);
+    gameTimer = null;
+    timeElapsed = 0;
+    $("#timer").html(formatTime(timeElapsed));
+  }
+
   // Toggle game timer
   var toggleTimer = function() {
     // If the timer exists, then turn it off.
     if (gameTimer != null) {
-      clearInterval(gameTimer);
-      gameTimer = null;
-      timeElapsed = 0;
-      $("#timer").html(timeElapsed.toString() + " seconds");
+      turnOffTimer();
     }
     else {
       gameTimer = setInterval(function() {
         timeElapsed++;
-        $("#timer").html(timeElapsed.toString() + " seconds");
+        $("#timer").html(formatTime(timeElapsed));
       }, 1000);
     }
   }

@@ -72,21 +72,22 @@
 
         <!-- reset button and score -->
         <div class="toolbar">
-          <button class="btn" id="reset">Reset</button>
-          <span class="stats">
-            <div>
-              Clicks: <span id="clicks">0</span>
-              Matches: <span id="matches">0</span>
+          
+            <div id="score-div">
+              <h3>Score</h3>
             </div>
-            <div>
-              <span id="stars"><i class='em-svg em-star'></i>
-                <i class='em-svg em-star'></i>
-                <i class='em-svg em-star'></i>
-                <i class='em-svg em-star'></i>
-              </span>
-              <span id="timer">0 seconds</span>
+            <div id="click-div">Clicks: <span id="clicks">0</span></div>
+            <div id="match-div">Matches: <span id="matches">0</span></div>
+            <div id="timer-div">
+              <span id="timer">Time: 00:00:00</span>
             </div>
-          </span>
+            <div id="star-div">
+              <span id="stars"><i class='em-svg em-star'></i><i class='em-svg em-star'></i><i class='em-svg em-star'></i><i class='em-svg em-star'></i></span>
+            </div>
+
+          <div id="reset-div">
+            <button class="btn" id="reset">Reset Board</button>
+          </div>
         </div>
         <!-- Hidden card template that we will access in js -->
         <div id="card-template" class="hidden">
