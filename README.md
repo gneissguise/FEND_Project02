@@ -1,4 +1,4 @@
-# Project Title
+# Emoji Match
 
 This is my submission for Udacity's Front End Nanodegree Memory Game Challenge.
 
@@ -22,4 +22,4 @@ will be shuffled!
 * **Justin Frost**
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
