@@ -17,6 +17,15 @@ If you do not like the hand you have been dealt, or you just want to try over
 again then you may click the reset button.  The board will reset and the cards
 will be shuffled!
 
+## Dependencies:
+*Google Fonts* <https://fonts.google.com/>
+*Bootstrap 4.0* <https://getbootstrap.com/>
+*Tether* <http://tether.io/>
+*Emoji Css* <https://afeld.github.io/emoji-css/>
+*jQuery 3.3.1* <https://jquery.com/>
+
+
+
 ## Author
 
 * **Justin Frost**
