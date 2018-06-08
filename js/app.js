@@ -78,15 +78,13 @@ $(() => {
               const finalTimeElapsed = timeElapsed;
               const clickCountHtml = $("#click-div").text();
               const matchCountHtml = $("#match-div").text();
-              //const starCountHtml = $("#star-div").text();
-
+              
               turnOffTimer();
 
               $("#scoreRow1").append(clickCountHtml);
               $("#scoreRow2").append(matchCountHtml);
               $("#scoreRow3").append(formatTime(finalTimeElapsed));
-              //$("#scoreRow4").append(starCountHtml);
-              setStarCount("#scoreRow4");
+              setStarRating("#scoreRow4");
               winModal.modal("show");
               setTimeout(() => {
                 resetBtn.trigger("click");
@@ -134,7 +132,7 @@ $(() => {
   const generatePairs = () => {
     let selected = [];
 
-    for (let i = 0; i < (PAIR_COUNT); i++) {
+    for (let i = 0; i < PAIR_COUNT; i++) {
       let n = rando(MAX_EMOJI);
 
       if (selected.length !== 0 &&
@@ -147,14 +145,14 @@ $(() => {
     }
 
     return selected;
-  }
+  };
 
   // Lookup card object
   const findCardById = (id) => {
     return cardList.find((c) => {
-      return (c.id === id);
+      return c.id === id;
     });
-  }
+  };
 
   // Deals the cards
   const dealCards = function() {
@@ -181,7 +179,7 @@ $(() => {
         pairCount[p]++;
 
         while (cards.find((c) => {
-          return (c.id === newCardId(n));
+          return c.id === newCardId(n);
         })){
           n = rando(CARD_COUNT);
         }
@@ -190,18 +188,18 @@ $(() => {
         id: newCardId(n),
         face: pairs[p],
         faceUp: false,
-        match: false,
-      })
+        match: false
+      });
     }
 
     return cards;
-  }
+  };
 
   // Sets the cards face down again
   const faceDown = (option) => {
     for (let i = 0; i < CARD_COUNT; i++){
-      if ((!cardList[i].match && cardList[i].faceUp) ||
-        (option.shown && cardList[i].faceUp)) {
+      if (!cardList[i].match && cardList[i].faceUp ||
+        option.shown && cardList[i].faceUp) {
         let cardReset = $("#" + cardList[i].id);
         cardReset.toggleClass("rotate-card-back");
         cardReset.next(".card-front").toggleClass("rotate-card-front");
@@ -240,7 +238,7 @@ $(() => {
   // Generates star rating on a win
   const setStarRating = (id) => {
     let rating = 0;
-
+    console.log("Div to place stars: " + id);
     $(id).html("");
 
     if (totalClicks < PAIR_COUNT + 5) {
@@ -274,19 +272,19 @@ $(() => {
     const result = date.toISOString().substr(11, 8);
 
     return "Time: " + result;
-  }
+  };
 
   const turnOffTimer = () => {
     clearInterval(gameTimer);
     gameTimer = null;
     timeElapsed = 0;
     $("#timer").html(formatTime(timeElapsed));
-  }
+  };
 
   // Toggle game timer
   const toggleTimer = () => {
     // If the timer exists, then turn it off.
-    if (gameTimer != null) {
+    if (gameTimer !== null) {
       turnOffTimer();
     }
     else {
@@ -295,7 +293,7 @@ $(() => {
         $("#timer").html(formatTime(timeElapsed));
       }, 1000);
     }
-  }
+  };
 
   // Global declarations
   let pairs = generatePairs();
